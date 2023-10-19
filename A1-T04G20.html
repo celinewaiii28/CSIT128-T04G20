@@ -166,3 +166,574 @@
 		to read more about Plagiarism.
     </body>
 </html>
+
+<html>
+	<head>
+		<title>CSIT128 Assignment 1</title>
+		
+		<style>
+			span.Part3text
+			{
+				font-family:Georgia, 'Times New Roman', Times, serif;
+			}
+			
+			.Part4 table
+            {
+                border: 2px solid black;
+            }
+			
+			.Part4 span
+            {
+                color:red;
+            }
+		</style>
+		
+		<script>
+			// Name
+			function validateName()
+			{
+                var name = document.getElementById("name").value; // id
+                var nameFormat = /^[A-Za-z\s]+$/; // Regular Expression to check for the format
+    
+                if (name == null || name.trim() == "") 
+                {
+					document.getElementById("errorName").innerHTML = 
+						"Name must be filled out"; // .innerHTML for html tags
+					return false;
+				}
+                else if (nameFormat.test(name) === false)
+                {
+                    document.getElementById("errorName").innerHTML =
+						"Wrong format! Number is not allowed. Please try again :)";
+    
+                    return false;
+                }				
+                else
+                {
+                    document.getElementById("errorName").innerHTML = "";
+                    document.getElementById("name").value = name.trim(); // .value for textbox
+                }	
+				return true;
+			}
+			
+			// Module Code
+			function validateModCod()
+			{
+				var mCode = document.getElementById("mCode").value;
+                var mCodeFormat = /^[0-5]{3}[a-z]{3}$/;
+    
+                if (mCode == null || mCode.trim() == "") 
+                {
+                    document.getElementById("errorModCode").innerHTML = "";
+    
+                    return false;
+                }
+                else if (mCodeFormat.test(mCode) === false)
+                {
+                    document.getElementById("errorModCode").innerHTML =
+						"Wrong format :( Please try again :)";
+    
+                    return false;
+                }
+				else
+                {
+                    document.getElementById("errorModCode").innerHTML = "";
+                    document.getElementById("mCode").value = mCode.trim();
+                }
+				
+				return true;
+			}
+			
+			// Message textbox content
+			function getMessage()
+            {
+                var message = document.getElementById("message").value;
+
+                if (message == null || message.trim() == "")
+                {
+                    document.getElementById("errorMessage").innerHTML = 
+                    "Message must be filled out";
+
+                    return false;
+                }
+
+                else
+                {
+                    document.getElementById("errorMessage").innerHTML = "";
+					//document.getElementById("translateMessage").value = message;
+                }
+                return true;
+            }
+			
+			// Translate
+		    function validateTranslate()
+            {
+                if (getMessage() == false)
+         	    {
+         		    return false;	
+         	    }
+
+                return true;
+            }
+			
+			// Date
+			function date()
+			{
+				var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+				var day = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+				
+				var date = new Date();
+				
+				if (date.getHours() == 0)
+				{
+					var ampm = "AM";
+					var hours = 12;
+				}
+				else if(date.getHours() > 12)
+				{
+					var ampm = "PM";
+					var hours = date.getHours() - 12;
+				}
+				else
+				{
+					var ampm = "AM";
+					var hours = date.getHours();
+				}
+				
+				if(date.getMinutes() < 10)
+				{
+					var min = "0" + String(date.getMinutes()); // XX:01, XX:02
+				}
+				else
+				{
+					var min = date.getMinutes();
+				}
+				
+				var formattedD = date.getDate() + " " + month[date.getMonth()] + " " + date.getFullYear() + " "
+									+ day[date.getDay()]	+ " " 
+									+ hours + ":" + min + " " + ampm;
+			
+				
+				document.getElementById("currentD").value = formattedD;
+			}
+			
+			// Find
+			function replaceV(find)
+			{
+				var replace = document.getElementById("replace");
+    
+                if (find.value.trim() != "") 
+                {
+                    replace.disabled = false; // enable replace text box
+                }
+				else
+				{
+					replace.disabled = true; // disable when FIND textbox empty
+				}
+			}
+			
+			// Replace
+			function validateReplace()
+			{
+				var replace = document.getElementById("replace").value;
+    
+                if (replace == null || replace.trim() == "") 
+                {
+                    document.getElementById("replaceMessage").innerHTML =
+						"Replace must be filled out";
+    
+                    return false;
+                }
+				else
+                {
+                    document.getElementById("replaceMessage").innerHTML = "";
+                    document.getElementById("replace").value = replace.trim();
+                }
+				
+				return true;
+			}
+			
+			// Find and Replace
+			function findAndReplace()
+			{
+				var find = document.getElementById("find").value;
+                var replace = document.getElementById("replace").value;
+                var message = document.getElementById("message").value;
+
+				if (replace != null || replace.trim() != "")
+                {
+                    var count = 0; 
+					document.getElementById("replaceMessage").innerHTML = "";
+					
+					while (message.indexOf(find) != -1) // indexOf() returns -1 when the element not found 
+					{
+						message = message.replace(find,replace);
+						count++;
+						
+					}
+					document.getElementById("replaceMessage").innerHTML = "No. of replacements: " + count;
+					document.getElementById("message").value = message;
+				}
+				return false;
+
+			}
+		</script>
+	</head>
+	
+	<body  onload=date();> <!-- load the date in -->
+		<!-- Part 1 -->
+		<table border="1" style="width:50%">
+			<tr style="background-color:lightcyan">
+				<th colspan = "3">CSIT128: Assignment 1</th>
+				<th>Group T04G04</th>
+			</tr>
+			
+			<tr>
+				<td style="width:10%" rowspan="3">Student Number / Name / Email</td>
+				<td style="width:10%">
+					8496018
+				</td>
+				<td style="width:20%">
+					Koh Jun Hao,Eldwin
+				</td>
+				<td  style="width:20%">
+					jhekoh003@mymail.sim.edu.sg
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					7907503
+				</td>
+				<td>
+					Serene Chang Jia Rou
+				</td>
+				<td>
+					sjrchang001@mymail.sim.edu.sg
+				</td>
+			</tr>
+			<tr>
+				<td>
+					8550815
+				</td>
+				<td>
+					Celine Wai See Ying
+				</td>
+				<td>
+					csywai001@mymail.sim.edu.sg
+				</td>
+			</tr>
+		</table>
+		
+		<br />
+
+<!------------------------------------------------------------------------------------------------------>
+		
+		<!-- Part 2 -->
+		<h1>Part 2: Hello World program in different languages</h1>
+
+		<!-- Unordered List -->
+		<ul>
+			<li><a href="#C++">C++</a></li>
+			<li><a href="#C#">C#</a></li>
+			<li><a href="#Python">Python</a></li>
+			<li><a href="#HTML">HTML</a></li>
+		</ul>
+
+		<hr> <!-- Horizontal line -->
+		
+		<!-- C++ -->
+		<h3 id="C++">C++</h3> 
+		<table border="0">
+			<tr>
+				<td rowspan="3"><img src="CPP.png"  height="150" width="150"/></td>
+				<td>
+	<pre> <!-- preserve the character and the line spacing -->
+	<code>
+	#include &lt;iostream&gt;
+						
+	void main( ) {
+		cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; endl;
+	}
+	</code>
+	</pre>
+				</td>
+			</tr>
+		</table>
+		
+		<br />
+		<hr> <!-- Horizontal line -->
+		
+		<!-- C# -->
+		<h3 id="C#">C#</h3>
+		<table border="0">
+			<tr>
+				<td rowspan="3"><img src="CS.png"  height="150" width="150"/></td>
+				<td>
+	<pre> <!-- preserve the character and the line spacing -->
+	<code>
+	using System;
+					
+	class Program
+	{
+		static void Main()
+		{
+			Console.WriteLine(&quot;Hello, World!&quot;);
+		}
+	}
+	</code>
+	</pre>
+				</td>
+			</tr>
+		</table>
+		
+		<br />
+		<hr> <!-- Horizontal line -->
+		
+		<!-- Python -->
+		<h3 id="Python">Python</h3>
+		<table border="0">
+			<tr>
+				<td rowspan="3"><img src="Python-Language.jpg"  height="200" width="150"/></td>
+				<td>
+	<pre> <!-- preserve the character and the line spacing -->
+	<code>
+	# Hello World program in Python
+						
+	print(&quot;Hello World!&quot;)
+	</code>
+	</pre>
+				</td>
+			</tr>
+		</table>
+		
+		<br />
+		<hr> <!-- Horizontal line -->
+
+		<!-- HTML -->
+		<h3 id="HTML">HTML</h3>
+		<table border="0"> <!-- 0: NO border -->
+			<tr>
+				<td rowspan="3"><img src="HTML.png"  height="150" width="150"/></td>
+				<td>
+	<pre> <!-- preserve the character and the line spacing -->
+	<code>
+	&lt;html&gt;
+	&lt;head&gt;
+	&lt;title&gt;Hello&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+	Hello World!
+	&lt;/body&gt;
+	&lt;/html&gt;
+	</code>
+	</pre>
+				</td>
+			</tr>
+		</table>
+		
+		<br />
+
+<!------------------------------------------------------------------------------------------------------>
+		<!-- Part 3 -->
+		<h1>Part 3: University policies and services</h1>
+		
+		<dt><b>PLAGIARISM</b></dt>
+		<dd>
+<pre>
+<span class="Part3text">Plagiarism is treated seriously. If we suspect any work is copied, all students involved are likely to receive zero
+for the entire assigment. Plagiarism has led to students being expelled from the University. 
+Please click <a href="https://www.uow.edu.au/student/support-services/learning-development/plagiarism/">here</a> to read more about Plagiarism.</span>
+</pre>
+		</dd>
+		
+		<br />
+
+		<dt><b>ACADEMIC CONSIDERATION</b></dt>
+		<dd>
+<pre>
+<span class="Part3text">We know that life isn't perfect and there may be a time when you can't hand in an assignment on time, or make it
+to class or an exam. If you find yourself in a situation like this, you may be eligible for Academin Consideration.
+Academic Consideration is designed to help students when they are sick, injured, or where a serious, unplanned 
+station has occured that has affected their ability to study.
+Please click <a href="https://www.uow.edu.au/student/admin/academic-consideration/portal/">here</a> to read more about Academic Consideration.</span>
+</pre>
+		</dd>
+		
+		<br />
+		
+		<dt><b>STUDENT SUPPORT ADVISERS</b></dt>
+		<dd>
+<pre>
+<span class="Part3text">If you have an issue or a problem that is affecting your study, then the Student Support Advisers may be able to
+help. There are Student Support Advisers available to assist students who are studying at all UOW Campuses and
+in all UOW Faculties.
+Please click <a href="https://www.uow.edu.au/student/support-services/advisers/">here</a> to read more about Student Support Advisers.</span>
+</pre>
+		
+<br />
+
+Student Support Adviser contact details for Faculty of Engineering and Information Sciences:
+<table border="1" style="width:30%">
+	<tr>
+		<td><b>Ann-Maree Smith</b>
+			<br />Bld 40:133, Wollongong
+			<br />Campus
+			<br />(02)4221 4714
+			<br />Mon-Fri
+			<br />ams@uow.edu.au
+		</td>
+
+		<td><b>Mitz Perez</b>
+			<br />Bld 4:105, Wollongong
+			<br />Campus
+			<br />(02)4221 3833
+			<br />Mon-Fri
+			<br />mperez@uow.edu.au
+		</td>
+	</tr>
+		
+</table>
+		</dd>
+		
+		<br /> <br />
+		
+		<dt><b>DISABILITY SERVICES</b></dt>
+		<dd>
+<pre>
+<span class="Part3text">Disability Services provide advice and support for students with a disability or health condition. Our aim is to
+ensure students with a disability realise their full academic potential. We also provide support for those who are
+the primary carers for those with a medical condition or disability.
+Please click <a href="https://www.uow.edu.au/student/support-services/disability/">here</a> to read more about Disability Services</span>
+</pre>
+		</dd>	
+
+		<br />
+		
+<!------------------------------------------------------------------------------------------------------>
+	<!-- Part 4 -->
+	
+		<h1>Part 4: Form</h1>
+		
+		<div class="Part4">
+			<table>
+				<form action="https://translate.google.com" method="get">
+					<tr>
+						<td>
+							Name:
+						</td>
+						<td>
+							<input id="name" type="text" name="name" size="40" onblur="validateName()"> <!-- onblur: when the user leaves the form field -->
+							<span id="errorName"></span> <!-- error message beside the text box -->
+						</td>						
+					</tr>
+					
+					<tr>
+						<td>
+							Module Code:
+						</td>
+						<td>
+							<input id="mCode" type="text" name="mCode" size="40" onblur="validateModCod()">
+							<span id = "errorModCode"></span>
+						</td>						
+					</tr>	
+					
+					<tr>
+						<td>				
+							Current Date:
+						</td>
+						<td>				
+							<input type="text" id="currentD" name="currentD" size="40" readonly>
+						</td>						
+					</tr>
+					
+					<tr>
+						<td>
+							<hr>
+						</td>
+						<td>
+							<hr>
+						</td>
+					</tr>
+							
+					<tr>
+						<td>						
+							Message:
+						</td>
+						<td>						
+							<textarea id="message" name="text" rows="3" cols="20" onblur="getMessage()">Hello 202309</textarea> <!-- getMessage() checks if Message textbox is empty --> <!-- name="text" for google -->
+							<span id = "errorMessage"></span>
+						</td>						
+					</tr>				
+
+					<tr>
+						<td>
+							Find:
+						</td>
+						<td>
+							<input id="find" type="text" name="find" size="40" onkeyup="replaceV(this)"> <!-- onkeyuup: when the user releases a key on the keyboard -->
+						</td>						
+					</tr>		
+
+					<tr>
+						<td>
+							Replace:
+						</td>
+						<td>
+							<input id="replace" type="text" name="replace" size="40" disabled="disabled" onblur="validateReplace()">
+							<span id = "replaceMessage"></span>
+						</td>						
+					</tr>		
+
+					<tr>
+						<td>						
+							<input type = "submit" value = "Find & Replace" onclick="return findAndReplace()">
+						</td>
+					</tr>		
+
+					<tr>
+						<td>
+							<hr>
+						</td>
+						<td>
+							<hr>
+						</td>
+					</tr>					
+
+					<tr>
+						<td>						
+							Source Language: 
+						</td>
+						<td>						
+							<input type="radio" name="sl" value="en" checked="checked"> English 
+							<input type="radio" name="sl" value="ms"> Malay
+						</td>						
+					</tr>
+							<br /><br />
+					<tr>
+						<td>							
+							Target Language:
+						</td>
+						<td>							
+							<select name="tl">
+								<option value="zh-cn">Chinese</option>
+								<option value="ms">Malay</option>
+								<option value="ja" selected>Japanese</option>
+								<option value="ko">Korean</option>
+							</select>
+							<br />
+						</td>						
+					</tr>	
+					
+					<tr>
+						<td>						
+							<input type = "submit" value = "Translate" onclick="return validateTranslate()">
+							<input type="reset" value="Reset form">
+						</td>
+					</tr>						
+				</form>
+			</table>
+			
+		</div>
+	</body>
+</html>
