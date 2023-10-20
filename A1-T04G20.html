@@ -172,6 +172,13 @@
 		<title>CSIT128 Assignment 1</title>
 		
 		<style>
+			.Part1 tr td
+			{
+				padding:5px;
+				height:30px;
+				
+			}
+			
 			span.Part3text
 			{
 				font-family:Georgia, 'Times New Roman', Times, serif;
@@ -179,8 +186,17 @@
 			
 			.Part4 table
             {
-                border: 2px solid black;
+                border:2px solid black;
+				height:500px;
+				border-bottom: solid 2px black;
+				
             }
+
+			.Part4 th
+            {
+				border-bottom: solid 2px black;
+				
+            }			
 			
 			.Part4 span
             {
@@ -396,49 +412,52 @@
 	</head>
 	
 	<body  onload=date();> <!-- load the date in -->
-		<!-- Part 1 -->
-		<table border="1" style="width:50%">
-			<tr style="background-color:lightcyan">
-				<th colspan = "3">CSIT128: Assignment 1</th>
-				<th>Group T04G04</th>
-			</tr>
-			
-			<tr>
-				<td style="width:10%" rowspan="3">Student Number / Name / Email</td>
-				<td style="width:10%">
-					8496018
-				</td>
-				<td style="width:20%">
-					Koh Jun Hao,Eldwin
-				</td>
-				<td  style="width:20%">
-					jhekoh003@mymail.sim.edu.sg
-				</td>
-			</tr>
+		<div class="Part1">
+			<!-- Part 1 -->
+			<table border="1" style="width:50%">
+				<tr style="background-color:lightcyan">
+					<th colspan = "3">CSIT128: Assignment 1</th>
+					<th>Group T04G04</th>
+				</tr>
+				
+				<tr>
+					<td style="width:10%" rowspan="3">Student Number / Name / Email</td>
+					<td style="width:10%">
+						8496018
+					</td>
+					<td style="width:20%">
+						Koh Jun Hao,Eldwin
+					</td>
+					<td  style="width:20%">
+						jhekoh003@mymail.sim.edu.sg
+					</td>
+				</tr>
 
-			<tr>
-				<td>
-					7907503
-				</td>
-				<td>
-					Serene Chang Jia Rou
-				</td>
-				<td>
-					sjrchang001@mymail.sim.edu.sg
-				</td>
-			</tr>
-			<tr>
-				<td>
-					8550815
-				</td>
-				<td>
-					Celine Wai See Ying
-				</td>
-				<td>
-					csywai001@mymail.sim.edu.sg
-				</td>
-			</tr>
-		</table>
+				<tr>
+					<td>
+						7907503
+					</td>
+					<td>
+						Serene Chang Jia Rou
+					</td>
+					<td>
+						sjrchang001@mymail.sim.edu.sg
+					</td>
+				</tr>
+				<tr>
+					<td>
+						8550815
+					</td>
+					<td>
+						Celine Wai See Ying
+					</td>
+					<td>
+						csywai001@mymail.sim.edu.sg
+					</td>
+				</tr>
+			</table>
+		</div>
+			
 		
 		<br />
 
@@ -632,6 +651,9 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 			<h1>Part 4: Form</h1>
 			<table>
 				<form action="https://translate.google.com" method="get" onsubmit="return validateForm()"> <!-- validateForm() to check the required fields -->
+				<tr>
+					<th colspan = "2">Part 4: Form</th>
+				</tr>
 					<tr>
 						<td>
 							Name:
