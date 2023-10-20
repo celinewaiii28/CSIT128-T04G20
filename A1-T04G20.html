@@ -189,6 +189,21 @@
 		</style>
 		
 		<script>
+			// Form
+			function validateForm()
+			{
+				if(validateName() && getMessage())
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+				
+				
+			}
+			
 			// Name
 			function validateName()
 			{
@@ -612,11 +627,11 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 		
 <!------------------------------------------------------------------------------------------------------>
 	<!-- Part 4 -->
-
+			
 		<div class="Part4">
 			<h1>Part 4: Form</h1>
 			<table>
-				<form action="https://translate.google.com" method="get">
+				<form action="https://translate.google.com" method="get" onsubmit="return validateForm()"> <!-- validateForm() to check the required fields -->
 					<tr>
 						<td>
 							Name:
