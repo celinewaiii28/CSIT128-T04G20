@@ -371,7 +371,7 @@
                 if (replace == null || replace.trim() == "") 
                 {
                     document.getElementById("replaceMessage").innerHTML =
-						"Replace must be filled out";
+						"";
     
                     return false;
                 }
@@ -408,6 +408,45 @@
 				return false;
 
 			}
+			
+			function resetForm(event) {
+			   // Prevent the default form reset from clearing the Current Date
+			   event.preventDefault();
+
+			   // Clear the innerHTML content of error message 
+			   var errorName = document.getElementById("errorName");
+			   var replaceMessage = document.getElementById("replaceMessage");
+			   var errorModCode = document.getElementById("errorModCode");
+
+			   if (errorName) {
+				  errorName.innerHTML = "";
+			   }
+
+			   if (replaceMessage) {
+				  replaceMessage.innerHTML = "";
+			   }
+
+			   if (errorModCode) {
+				  errorModCode.innerHTML = "";
+			   }
+
+			   // Form element
+			   var form = document.getElementById("myForm");
+
+			   // Clear value of text fields except for Message and CurrentDate
+			   for (var i = 0; i < form.elements.length; i++) {
+				  var element = form.elements[i];
+				  if (element.type === "text" && element.name !== "currentD") {
+					 element.value = "";
+				  }
+			   }
+			   
+			   var message = document.getElementById("message");
+			   if (message) {
+				  message.value = "Hello 202309"; // Keep default text Hello 202309
+			   }
+			}
+
 		</script>
 	</head>
 	
@@ -650,7 +689,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 		<div class="Part4">
 			<h1>Part 4: Form</h1>
 			<table>
-				<form action="https://translate.google.com" method="get" onsubmit="return validateForm()"> <!-- validateForm() to check the required fields -->
+				<form id="myForm" action="https://translate.google.com" method="get" onsubmit="return validateForm()"> <!-- validateForm() to check the required fields -->
 				<tr>
 					<th colspan = "2">Part 4: Form</th>
 				</tr>
@@ -670,7 +709,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 						</td>
 						<td>
 							<input id="mCode" type="text" name="mCode" size="40" onblur="validateModCod()">
-							<span id = "errorModCode"></span>
+							<span id="errorModCode"></span>
 						</td>						
 					</tr>	
 					
@@ -698,7 +737,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 						</td>
 						<td>						
 							<textarea id="message" name="text" rows="3" cols="20" onblur="getMessage()">Hello 202309</textarea> <!-- getMessage() checks if Message textbox is empty --> <!-- name="text" for google -->
-							<span id = "errorMessage"></span>
+							<span id="errorMessage"></span>
 						</td>						
 					</tr>				
 
@@ -764,7 +803,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 					<tr>
 						<td>						
 							<input type = "submit" value = "Translate" onclick="return validateTranslate()">
-							<input type="reset" value="Reset form">
+							<input id="reset" type="reset" value="Reset form" onclick="return resetForm(event)">
 						</td>
 					</tr>						
 				</form>
