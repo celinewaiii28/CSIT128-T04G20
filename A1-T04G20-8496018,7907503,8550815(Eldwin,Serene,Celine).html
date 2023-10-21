@@ -18,16 +18,21 @@
 			.Part4 table
             {
                 border:2px solid black;
-				height:500px;
-				border-bottom: solid 2px black;
+				height:800px;
+				border-bottom: solid 1px black;
 				
             }
 
 			.Part4 th
             {
-				border-bottom: solid 2px black;
-				
-            }			
+				border-bottom: solid 1px black;
+				font-size:30px;
+            }
+			
+			.Part4 h1
+			{
+				margin: 0; <!-- Removes the default margin white space -->
+			}
 			
 			.Part4 span
             {
@@ -55,7 +60,7 @@
 			function validateName()
 			{
                 var name = document.getElementById("name").value; // id
-                var nameFormat = /^[A-Za-z\s]+$/; // Regular Expression to check for the format
+                var nameFormat = /^[A-Za-z#!@*()^&%]+$/; // Regular Expression to check for the format
     
                 if (name == null || name.trim() == "") 
                 {
@@ -514,19 +519,23 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 
 		<br />
 		
+		<hr>
+		
 <!------------------------------------------------------------------------------------------------------>
 	<!-- Part 4 -->
-			
-		<div class="Part4">
+		
+        
+        
+        <div class="Part4">
 			<h1>Part 4: Form</h1>
-			<table>
+            <table>
 				<form id="myForm" action="https://translate.google.com" method="get" onsubmit="return validateForm()"> <!-- validateForm() to check the required fields -->
 				<tr>
 					<th colspan = "2">Part 4: Form</th>
 				</tr>
 					<tr>
 						<td>
-							Name:
+							<b>Name:</b>
 						</td>
 						<td>
 							<input id="name" type="text" name="name" size="40" onblur="validateName()"> <!-- onblur: when the user leaves the form field -->
@@ -536,7 +545,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 					
 					<tr>
 						<td>
-							Module Code:
+							<b>Module Code:</b>
 						</td>
 						<td>
 							<input id="mCode" type="text" name="mCode" size="40" onblur="validateModCod()">
@@ -546,7 +555,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 					
 					<tr>
 						<td>				
-							Current Date:
+							<b>Current Date:</b>
 						</td>
 						<td>				
 							<input type="text" id="currentD" name="currentD" size="40" readonly>
@@ -564,7 +573,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 							
 					<tr>
 						<td>						
-							Message:
+							<b>Message:</b>
 						</td>
 						<td>						
 							<textarea id="message" name="text" rows="3" cols="20" onblur="getMessage()">Hello 202309</textarea> <!-- getMessage() checks if Message textbox is empty --> <!-- name="text" for google -->
@@ -574,7 +583,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 
 					<tr>
 						<td>
-							Find:
+							<b>Find:</b>
 						</td>
 						<td>
 							<input id="find" type="text" name="find" size="40" onkeyup="replaceV(this)"> <!-- onkeyuup: when the user releases a key on the keyboard -->
@@ -583,7 +592,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 
 					<tr>
 						<td>
-							Replace:
+							<b>Replace:</b>
 						</td>
 						<td>
 							<input id="replace" type="text" name="replace" size="40" disabled="disabled" onblur="validateReplace()">
@@ -608,7 +617,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 
 					<tr>
 						<td>						
-							Source Language: 
+							<b>Source Language:</b>
 						</td>
 						<td>						
 							<input type="radio" name="sl" value="en" checked="checked"> English 
@@ -618,7 +627,7 @@ Please click <a href="https://www.uow.edu.au/student/support-services/disability
 							<br /><br />
 					<tr>
 						<td>							
-							Target Language:
+							<b>Target Language:</b>
 						</td>
 						<td>							
 							<select name="tl">
