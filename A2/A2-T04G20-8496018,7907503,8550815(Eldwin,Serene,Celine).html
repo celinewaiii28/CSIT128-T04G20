@@ -1,6 +1,5 @@
 <html>
     <body>
-
 		<head>
 			<style>
 			.Part1 tr td, .Part1 tr th, .Part2 tr td, .Part2 tr th 
@@ -24,6 +23,15 @@
 			</style>
 
 			<script>
+				document.getElementById("start-button").addEventListener("click", function () {
+					var randomNumber1 = Math.floor(Math.random() * 10);
+					var randomNumber2 = Math.floor(Math.random() * 10);
+					var randomNumber3 = Math.floor(Math.random() * 10);
+
+					document.getElementById("number1").textContent = "Number 1: " + randomNumber1;
+					document.getElementById("number2").textContent = "Number 2: " + randomNumber2;
+					document.getElementById("number3").textContent = "Number 3: " + randomNumber3;
+				});
 
 			</script>
 
@@ -102,13 +110,17 @@
 					<th colspan="2">Current Score: 0</th>
 				</tr>
 				<tr>
-					<td colspan="3">Start game button</td>
-					<td colspan="3">End game button</td>
+					<td colspan="3">
+						<button id="start-button">Start</button>
+					</td>
+					<td colspan="3">
+						<button id="end-button">End</button>
+					</td>
 				</tr>
 				<tr>
-					<td colspan="2">1st Number</td>
-					<td colspan="2">2nd Number</td>
-					<th colspan="2">3rd Number</th>
+					<td colspan="2" id="number1"></td>
+					<td colspan="2" id="number2"></td>
+					<td colspan="2" id="number3"></td>
 				</tr>
             </table>
         </div>
